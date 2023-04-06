@@ -1,0 +1,115 @@
+.hero__container {
+    text-align: center;
+}
+
+.hero__title {
+    width: 300px;
+    font-size: 2.5em;
+    text-transform: capitalize;
+    background-color: #1b1b1b;
+    color: #FFF;
+    padding: .3em;
+    margin: .8em auto;
+}
+
+.hero__container h3 {
+    margin: .6em auto;
+    font-size: 1.2em;
+}
+
+.hero__roles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.role {
+    padding: .6em 1em;
+    color: #FFF;
+    background: #000;
+    margin-right: .5em;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.role_Carry {
+    background-color: #F42;
+}
+
+.role_Disabler {
+    background-color: #F59;
+}
+
+.role_Durable {
+    background-color: #6CF;
+}
+
+.role_Escape {
+    background-color: #7C5;
+}
+
+.role_Initiator {
+    background-color: #AA9;
+}
+
+.role_Nuker {
+    background-color: #A59;
+}
+
+.role_Pusher {
+    background-color: #FC3;
+}
+
+.role_Support {
+    background-color: #b54;
+}
+
+.hero__data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5em;
+}
+
+.hero__data div {
+    margin: 1em 0;
+    padding: 0 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero__legs {
+    border-right: 1px solid #CCC;
+}
+
+.hero__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 150px;
+    margin: 30px auto 0px;
+    text-decoration: none;
+    background-color: #222;
+    color: #FFF;
+    padding: .7em 1.2em;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #222;
+    transition: .4s;
+}
+
+.hero__back:hover {
+    background-color: #FFF;
+    color: #222;
+}
+
+.hero__notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
