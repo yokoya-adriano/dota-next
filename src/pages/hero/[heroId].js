@@ -2,11 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/Hero.module.css'
 
-export async function getStaticPaths() {
-    const response = await fetch('https://api.opendota.com/api/heroStats/')
-    const data = await response.json()
+import { fetchHeroes } from '@/services/api'
 
-    const paths = data.map((hero) => {
+export async function getStaticPaths() {
+    const heroesStats = await fetchHeroes();
+
+    const paths = heroesStats.map((hero) => {
         return {
             params: {
                 heroId: `${hero.id}`
@@ -18,27 +19,26 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-    const data = await fetch(`https://api.opendota.com/api/heroStats/`)
-    const heroes = await data.json()
+    const heroesStats = await fetchHeroes();
 
     const { heroId } = context.params;
+    const heroNumber = Number(heroId)
 
-    if (!heroId) {
+    if (heroNumber < 1 || heroNumber > heroesStats.length) {
         return { props: { hero: null } };
     }
 
     let hero = null;
 
-    if (heroId < 24) {
-        hero = heroes[heroId - 1];
+    if (heroNumber < 24) {
+        hero = heroesStats[heroNumber - 1];
     } else {
-        hero = heroes[heroId - 2];
+        hero = heroesStats[heroNumber - 2];
     }
 
     return {
-        props: { hero }
-    }
-
+        props: { hero },
+    };
 }
 
 export default function Hero({ hero }) {

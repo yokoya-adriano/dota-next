@@ -5,27 +5,19 @@ import Image from 'next/image'
 
 import Card from '../components/Card'
 
-import axios from 'axios'
+import { fetchHeroes } from '@/services/api'
 
 export async function getStaticProps() {
-  try {
-    const response = await axios.get('https://api.opendota.com/api/heroStats/');
-    const heroes = response.data;
-
-    console.log(heroes)
-
+    const heroesStats = await fetchHeroes();
+    
     return {
-      props: { heroes }
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: { heroes: [] }
-    };
-  }
+        props: {
+            heroesStats
+        },
+    }
 }
 
-export default function Home({ heroes }) {
+export default function Home({ heroesStats }) {
   return (
     <>
         <div className={styles.title__container}>
@@ -33,7 +25,7 @@ export default function Home({ heroes }) {
             <Image src={dotaLogo} width="50" height="50" alt="Dota Logo" />
         </div>
         <div className={styles.heroes__container}>
-            {heroes.map((hero) => (
+            {heroesStats.map((hero) => (
                 <Card key={hero.id} hero={hero}  />
             ))}
         </div>
